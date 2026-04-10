@@ -7,6 +7,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "echo 'Build complete - no compilation needed for Node.js'",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
