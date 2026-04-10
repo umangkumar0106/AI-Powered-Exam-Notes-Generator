@@ -17,7 +17,7 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const app = express()
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173"
+const CLIENT_URL = process.env.CLIENT_URL || "https://ai-powered-exam-notes-generator-client11.onrender.com"
 const PORT = process.env.PORT || 5000
 const isProduction = process.env.NODE_ENV === "production"
 
