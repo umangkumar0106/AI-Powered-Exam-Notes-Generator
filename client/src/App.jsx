@@ -9,6 +9,8 @@ import Notes from './pages/Notes.jsx'
 import PaymentSuccess from './pages/PaymentSuccess.jsx'
 import PaymentFailed from './pages/PaymentFailed.jsx'
 import Pricing from './pages/Pricing.jsx'
+import axios from "axios"
+axios.defaults.withCredentials = true
 
 
 function App()
