@@ -22,7 +22,7 @@ export const getCurrentUser = async (dispatch) => {
 
 export const generateNotes = async (payload) => {
   try {
-    const result = await api.post("/api/notes/generate-notes", payload);
+    const result = await api.post("/api/notes/generate-notes", payload,{withCredentials:true});
     return result.data;
   } catch (error) {
     console.error("Error generating notes:", error?.response?.data || error.message);
