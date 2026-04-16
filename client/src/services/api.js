@@ -14,7 +14,8 @@ export const getCurrentUser = async (dispatch) => {
   } catch (error) {
     // Silently handle 401/400 - user is not authenticated yet
     if (error?.response?.status === 401 || error?.response?.status === 400) {
-      return;
+       dispatch(setUserData(null));
+
     }
     console.error("Error fetching current user:", error?.response?.data || error.message);
   }
