@@ -10,26 +10,33 @@ function Pricing() {
   const [payingAmount, setPayingAmount] = useState(null);
   const navigate = useNavigate();
 
-  const handlePaying = async (amount) => {
-    try {
-      setPayingAmount(amount);
-      setPaying(true);
-      const result = await axios.post(
-        serverUrl + "/api/credit/order",
-        { amount },
-        { withCredentials: true },
-      );
-
-      if (result.data.url) {
-        window.location.href = result.data.url;
-      }
-
-      setPaying(false);
-    } catch (error) {
-      setPaying(false);
-      console.log(error);
+const handlePaying = async (amount) => {
+  try {
+    if (!document.cookie.includes("token")) {
+      alert("Please login first");
+      navigate("/auth");
+      return;
     }
-  };
+
+    setPayingAmount(amount);
+    setPaying(true);
+
+    const result = await axios.post(
+      serverUrl + "/api/credit/order",
+      { amount },
+      { withCredentials: true }
+    );
+
+    if (result.data.url) {
+      window.location.href = result.data.url;
+    }
+
+    setPaying(false);
+  } catch (error) {
+    setPaying(false);
+    console.log(error);
+  }
+};
   return (
     <div className="min-h-screen bg-gray-100 px-6 py-10 relative">
       <button
